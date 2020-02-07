@@ -1,0 +1,20 @@
+QUESTION: Which city has the most expensive costs for living for a single person?
+
+A rationale for your design decisions.
+How did you choose your particular visual encodings and interaction techniques?
+What alternatives did you consider and how did you arrive at your ultimate choices?
+We decided to make our visualization a map with a filter that allows that user to pick which types of expenses to compare
+to see which city has the most expensive cost of living. Each city on the map will have a circle of a certain size, which
+will tell the reader how expensive it is to live there. The larger the circle, the more expensive it is. We also decided
+to add a list of the top most expensive cities to live in next to the map, so that it is clearer for the user.
+We also considered using different color shades to express cost as well for the circles on the map but we realized that it
+would be redundant and decided just to use size. Another thing we considered was to use a bar graph but there were too many
+categories and cities to include, that we decided to show all the cities in a map and reduce the number of categories by only
+selecting a few with the filter.
+
+An overview of your development process.
+Describe how the work was split among the team members. 
+Include a commentary on the development process, including answers to the following questions: 
+ 1. Roughly how much time did you spend developing your application (in people-hours)?
+ 2. What aspects took the most time?
+
