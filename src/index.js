@@ -15,6 +15,7 @@
       .scale(99)                       // This is like the zoom
       .translate([ width/2, height/2 ]);
 
+  // Loading data
   d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")  // World shape
     .defer(d3.csv, "https://gist.githubusercontent.com/mtgemo/407034207687ace3529864158ea46856/raw/1b6c0ffa28890dc514b917344e27eb6e128e8ac0/usd-total-CoL.csv") // Position of circles
@@ -25,9 +26,10 @@
     var valueExtent = d3.extent(data, function(d) { return +d.Total; })
     var colorScale = d3.scaleSequential()
             .domain(valueExtent)
-            .interpolator(d3.interpolateCool);
+            .interpolator(d3.interpolateCool); // color scheme
     var g = svg.append("g");
-    // create a tooltip
+
+    // Create a tooltip (not working currently)
     var Tooltip =
       svg.append("div")
       .attr("class", "tooltip")
@@ -57,7 +59,7 @@
         .data(dataGeo.features)
         .enter()
         .append("path")
-          .attr("transform", function(d) { return "translate(" + d + ")"; })
+          .attr("transform", function(d) { return "translate(" + d + ")"; }) // zooming effect
           .attr("fill", "#b8b8b8")
           .attr("d", d3.geoPath()
               .projection(projection)
@@ -65,21 +67,22 @@
         .style("stroke", "none")
         .style("opacity", .3)
 
-    // Add circles:
+    // Add circles
     var circle = g.selectAll("circle")
         .data(data)
         .enter().append("circle")
-            .attr("r", 3)
-            .attr("cx", function(d){ return projection([+d.Longitude, +d.Latitude])[0] })
+            .attr("r", 3) // radius
+            .attr("cx", function(d){ return projection([+d.Longitude, +d.Latitude])[0] }) // coordinates
             .attr("cy", function(d){ return projection([+d.Longitude, +d.Latitude])[1] })
-            .style("fill", function(d){return colorScale(+d.Total)})
+            .style("fill", function(d){return colorScale(+d.Total)}) // scale value to color
             .attr("fill-opacity", .7)
             .attr("stroke", "black")
             .attr("stroke-width", 0.2)
-        .on("mouseover", mouseover)
+        .on("mouseover", mouseover) // function calls for tooltip
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
 
+    // Make the map zoomable
     svg.append("rect")
         .attr("fill", "none")
         .attr("pointer-events", "all")
@@ -93,7 +96,7 @@
         g.attr("transform", d3.event.transform);
     }
 
-    // Add title and explanation
+    // Add title and explanation (can change later)
     svg
       .append("text")
         .attr("text-anchor", "end")
@@ -108,6 +111,10 @@
     // --------------- //
     // ADD LEGEND //
     // --------------- //
+
+    // CODE BELOW THIS LINE IS FOR REFERENCE ONLY
+    // TAKEN FROM THE ORIGINAL BUBBLE MAP TEMPLATE
+    // LEGEND HASN'T BEEN DONE
     legend({
       color: d3.scaleSequential([0, 100], d3.interpolateViridis),
       title: "Temperature (°F)"
