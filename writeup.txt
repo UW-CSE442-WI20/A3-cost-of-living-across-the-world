@@ -1,19 +1,24 @@
-QUESTION: Which city has the most expensive costs for living for a single person?
+QUESTION: Which city has the most expensive costs of living for a single person?
 
-A rationale for your design decisions.
+1. A rationale for your design decisions.
 How did you choose your particular visual encodings and interaction techniques?
 What alternatives did you consider and how did you arrive at your ultimate choices?
-We decided to make our visualization a map with a filter that allows that user to pick which types of expenses to compare
-to see which city has the most expensive cost of living. Each city on the map will have a circle of a certain size, which
-will tell the reader how expensive it is to live there. The larger the circle, the more expensive it is. We also decided
-to add a list of the top most expensive cities to live in next to the map, so that it is clearer for the user.
-We also considered using different color shades to express cost as well for the circles on the map but we realized that it
-would be redundant and decided just to use size. Another thing we considered was to use a bar graph but there were too many
-categories and cities to include, that we decided to show all the cities in a map and reduce the number of categories by only
-selecting a few with the filter.
 
-An overview of your development process.
-Describe how the work was split among the team members. 
+Data source: https://www.kaggle.com/stephenofarrell/cost-of-living
+Topic question: Which city has the most expensive costs of living for an average person (unit is in US dollars).
+
+We decided to make our visualization a map with a filter that allows users to pick which types of expenses to compare to see which city has the most expensive cost of living. Each city on the map will have a circle of a certain color, the color gradient would tell the readers how expensive it is to live there. At first, we decided to use the size of the circles to represent how expensive it is to live in different cities but later changed to use the color gradient as some of the circles overlap each other due to the distribution of cities in the database. Thus, we decided to choose only color difference instead of both color and size of the circles to avoid redundant encodings.
+----Mention legends here when it's added to the map?---- (Legend, which is the bar with gradient of color that represents the cost of each category in USD), how color is determined? Is it color gradient or different color blocks?
+
+Interaction techniques we chose to apply to this interactive visualization:
+Single-frame interactivity: we decided that our visualization manipulates the interaction of a single-frame without taking users to new visual scenes. By doing this, users would be able to concentrate on interacting with the current visualization view. We added the function that users are able to zoom in and out of the map to better see the exact location of the cities on the map.
+Filter bar: This filter bar enables users to choose which categories they want see the difference in expenses and compare different cities with each other.
+--Details-on-demand if added (This is to show the name of cities and the cost of that category--
+
+Another thing we considered was to use a bar graph, each city would have many corresponding bars that represent different categories, but there were too many categories and cities to include, so we decided to show all the cities in a map and reduce the number of categories by only selecting a few significant categories that mostly differentiate between cities.
+
+2. An overview of your development process.
+Describe how the work was split among the team members.
 Include a commentary on the development process, including answers to the following questions: 
  1. Roughly how much time did you spend developing your application (in people-hours)?
  2. What aspects took the most time?
