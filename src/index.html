@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Title</title>
-  </head>
-  <body>
-    <h1>My Webpage</h1>
-    <script src="./index.js"></script>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="map.css">
+  <title>Cost of Living Around the World</title>
 
-    <!-- Load d3.js and the geo projection plugin -->
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <!-- Load d3.js and the geo projection plugin -->
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3.legend.js"></script>
+</head>
+<body>
+  <h1>Cost of Living Around the World</h1>
 
-    <!-- Create an element where the map will take place -->
-    <svg id="my_dataviz" width="630" height="350"></svg>
+  <!-- Create an element where the map will take place -->
+  <svg width="1000" height="700" class="svg-content"></svg>
 
-
-  </body>
+  <script id="col-map" src="./index.js"></script>
+</body>
 </html>
