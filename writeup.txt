@@ -7,7 +7,10 @@ What alternatives did you consider and how did you arrive at your ultimate choic
 Data source: https://www.kaggle.com/stephenofarrell/cost-of-living
 Topic question: Which city has the most expensive costs of living for an average person (unit is in US dollars).
 
-We decided to make our visualization a map with a filter that allows users to pick which types of expenses to compare to see which city has the most expensive cost of living. Each city on the map will have a circle of a certain color, the color gradient would tell the readers how expensive it is to live there. At first, we decided to use the size of the circles to represent how expensive it is to live in different cities but later changed to use the color gradient as some of the circles overlap each other due to the distribution of cities in the database. Thus, we decided to choose only color difference instead of both color and size of the circles to avoid redundant encodings.
+We decided to make our visualization a map with a filter that allows users to pick which types of expenses to compare to see which city has the most expensive cost of living.
+Each city on the map will have a circle of a certain color, the color gradient would tell the readers how expensive it is to live there.
+At first, we decided to use the size of the circles to represent how expensive it is to live in different cities but later changed to use the color gradient as some of the circles overlap each other due to the distribution of cities in the database.
+Thus, we decided to choose only color difference instead of both color and size of the circles to avoid redundant encodings.
 ----Mention legends here when it's added to the map?---- (Legend, which is the bar with gradient of color that represents the cost of each category in USD), how color is determined? Is it color gradient or different color blocks?
 
 Interaction techniques we chose to apply to this interactive visualization:
@@ -19,7 +22,12 @@ Another thing we considered was to use a bar graph, each city would have many co
 
 2. An overview of your development process.
 Describe how the work was split among the team members.
-Include a commentary on the development process, including answers to the following questions: 
- 1. Roughly how much time did you spend developing your application (in people-hours)?
- 2. What aspects took the most time?
+Include a commentary on the development process, including answers to the following questions:
+Roughly how much time did you spend developing your application (in people-hours)?
+What aspects took the most time?
+
+We had 3 main meetings: The first meeting was to discuss about the topic and the visual encoding for this project. The second meeting was to catch up on the work flow and allocate the tasks accordingly. The third meeting was to add the final features, discuss about the write-up and fix some minor visual features. Other than that, all other communications were done through social network (Discord).
+We divided the tasks for each team member, there are different parts such as: Data wrangling and processing, coding for the map, creating the filter bar, write-up. All team members wear different hats and might help each other with their tasks besides our initial main tasks.
+In general, each of us spent about ........ Hours on average for this project.
+--Adding what aspect took the most time--
 
