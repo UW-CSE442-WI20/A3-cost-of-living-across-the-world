@@ -59,6 +59,7 @@ ul {
     padding: 10px 15px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    overflow-y: auto;
 }
 
 #filter > ul {
