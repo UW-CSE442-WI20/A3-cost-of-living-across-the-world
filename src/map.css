@@ -43,3 +43,30 @@ h5 {
 	top: 0;
 	left: 0;
 }*/
+
+body {
+    color: #555;
+    font-size: 1.00em;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*hr {*/
+/*    margin: 50px 0;*/
+/*}*/
+
+ul {
+    list-style: none;
+}
+
+/*.container {*/
+/*    margin: 40px auto;*/
+/*    max-width: 700px;*/
+/*}*/
+
+/*li {*/
+/*    margin-top: 1em;*/
+/*}*/
+
+/*label {*/
+/*    font-weight: bold;*/
+/*}*/

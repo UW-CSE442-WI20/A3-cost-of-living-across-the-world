@@ -160,5 +160,23 @@
         .attr('alignment-baseline', 'middle')
   }
 
+
+  // FILTER THINGS
+  var checkboxes = document.querySelectorAll('input.food'),
+      checkall = document.getElementById('food');
+
+  for(var i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = function(item) {
+      var checkedCount = document.querySelectorAll('input.food:checked').length;
+      checkall.checked = (checkedCount === checkboxes.length);
+    }
+  }
+
+  checkall.onclick = function() {
+    for(var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = this.checked;
+    }
+  }
+
   }
 })();

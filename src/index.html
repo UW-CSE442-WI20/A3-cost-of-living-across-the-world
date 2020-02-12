@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<html>
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="map.css">
@@ -12,14 +11,65 @@
   <script src="https://d3js.org/d3.v4.js"></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://d3js.org/d3.legend.js"></script>
+  <script src="./filter.js" type="text/javascript"></script>
 </head>
 <body>
   <h1>Cost of Living Around the World</h1>
   <h5>Pinch or Spread to Zoom in and out | Click and Drag to change View</h5>
 
-  <!-- Create an element where the map will take place -->
-  <svg width="1000" height="600" class="svg-content"></svg>
+  <div class="container">
+    <ul>
+      <li><input type="checkbox" id="total"><label> Total Expenses</label></li>
+      <li>
+        <input type="checkbox" id="food"><label> Food Expenses</label>
+        <ul>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Meal</label></li>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Pepsi (0.33L bottle)</label></li>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Milk (1L)</label></li>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Beer (0.5L bottle)</label></li>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Apples (1 kg)</label></li>
+          <li><label><input type="checkbox" class="food" onclick="onlyOne(this)"> Cappuccino</label></li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="transportation"><label> Transportation</label>
+        <ul>
+          <li><label><input type="checkbox" class="transportation" onclick="onlyOne(this)"> Gasoline (1L)</label></li>
+          <li><label><input type="checkbox" class="transportation" onclick="onlyOne(this)"> New Toyota Corolla</label></li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="accomodation"><label> Accomodation</label>
+        <ul>
+          <li><label><input type="checkbox" class="accomodation" onclick="onlyOne(this)"> Apartment (3 bedrooms)</label></li>
+          <li><label><input type="checkbox" class="accomodation" onclick="onlyOne(this)"> Basic expenses-electricity, water (85m2 apartment)</label></li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="personal"><label> Personal Expenses</label>
+        <ul>
+          <li><label><input type="checkbox" class="personal" onclick="onlyOne(this)"> Internet (1 month)</label></li>
+          <li><label><input type="checkbox" class="personal" onclick="onlyOne(this)"> Fitness club (1 month)</label></li>
+          <li><label><input type="checkbox" class="personal" onclick="onlyOne(this)"> Movie ticket</label></li>
+          <li><label><input type="checkbox" class="personal" onclick="onlyOne(this)"> A pair of jeans</label></li>
+          <li><label><input type="checkbox" class="personal" onclick="onlyOne(this)"> A pair of Nike shoes</label></li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="education"><label> Education</label>
+        <ul>
+          <li><label><input type="checkbox" class="education" onclick="onlyOne(this)"> Preschool/Kindergarten (1 month)</label></li>
+          <li><label><input type="checkbox" class="education" onclick="onlyOne(this)"> International Primary School (1 year)</label></li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="salary"><label> Salary (monthly)</label>
+      </li>
+    </ul>
+  </div>
 
+  <!-- Create an element where the map will take place -->
+  <svg width="1000" height="700" class="svg-content"></svg>
   <script id="col-map" src="./index.js"></script>
 </body>
 </html>
