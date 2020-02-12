@@ -17,6 +17,11 @@ h5 {
     opacity: 0.5;
 }
 
+circle:hover {
+    stroke: black;
+    stroke-width: 1px;
+}
+
 /*.svg-content circle:hover{
   stroke: red;
   stroke-width: 10px;
@@ -26,6 +31,11 @@ h5 {
     margin-left: auto;
     margin-right: auto;
     display:block;
+}
+
+.circle:hover {
+  stroke: black;
+  stroke-width: 4px;
 }
 
 /*.svg-map {
