@@ -1,72 +1,90 @@
+/* MAP.CSS */
+
+
+/* Base */
+
+body {
+    color: #555;
+    font-size: 1.00em;
+}
+
+body,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
 h1 {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    font-family: "Lucida Console", Monaco, monospace;
-    color: grey;
     opacity: 0.5;
+    color: #333;
     text-transform: uppercase;
 }
 
 h5 {
-    color: grey;
-    font-family: "Lucida Console", Monaco, monospace;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    color: #333;
     opacity: 0.5;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Container */
+
+#container {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+/* Filter */
+
+#filter {
+    flex-shrink: 1;
+    background: #EAEAEA;
+    padding: 10px 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#filter > ul {
+    padding: 0;
+}
+
+#filter li {
+    margin: 6px 0;
+    font-size: 13px;
+}
+
+#filter .subcategory {
+    margin-left: -15px;
+}
+
+/* Map */
+
+.svg-content {
+    flex-shrink: 0;
+    border: 2px solid #EAEAEA;
+    border-left: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 /*.svg-content circle:hover{
   stroke: red;
   stroke-width: 10px;
 }*/
-
-.svg-content {
-    margin-left: auto;
-    margin-right: auto;
-    display:block;
-}
-
-/*.svg-map {
-	display: inline-block;
-	position: relative;
-	width: 100%;
-	padding-bottom: 100%;
-	vertical-align: middle;
-	overflow: hidden;
-}
-
-.svg-content {
-	display: inline-block;
-	position: absolute;
-	top: 0;
-	left: 0;
-}*/
-
-body {
-    color: #555;
-    font-size: 1.00em;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-/*hr {*/
-/*    margin: 50px 0;*/
-/*}*/
-
-ul {
-    list-style: none;
-}
-
-/*.container {*/
-/*    margin: 40px auto;*/
-/*    max-width: 700px;*/
-/*}*/
-
-/*li {*/
-/*    margin-top: 1em;*/
-/*}*/
-
-/*label {*/
-/*    font-weight: bold;*/
-/*}*/
