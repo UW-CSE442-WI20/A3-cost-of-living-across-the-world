@@ -203,7 +203,7 @@
                   .attr("fill", "#000")
                   .attr("font-size", 14)
                   .attr("text-anchor", "start")
-                  .text("0");
+                  .text(valueExtent[0]);
               svg.append("text")
                 .attr("class", "caption")
                 .attr("x", width - 75)
@@ -211,7 +211,7 @@
                 .attr("fill", "#000")
                 .attr("font-size", 14)
                 .attr("text-anchor", "start")
-                .text("max");
+                .text(valueExtent[1]);
     }
   
     }
