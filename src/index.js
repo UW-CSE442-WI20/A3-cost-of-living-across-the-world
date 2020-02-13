@@ -74,7 +74,7 @@
 
       var colorScale = d3.scaleSequential()
         .domain(valueExtent)
-        .interpolator(d3.scaleOrdinal(d3.schemeBlues[5]));
+        .interpolator(d3.scaleOrdinal(d3.schemeOrRd[5]));
 
       var Tooltip = svg
           .append("text")
@@ -84,8 +84,6 @@
           .attr("y", height - 30)
           .attr("width", 90)
           .style("font-size", 14)
-    
-
 
 
   // Three function that change the tooltip when user hover / move / leave a cell
@@ -156,11 +154,9 @@
                   .on("zoom", zoom))
 
 
-
-
-                  var margin = 0,
-                  widthTwo = 200 - margin,
-                  heightTwo = 40 - margin;
+              var margin = 0,
+              widthTwo = 250 - margin,
+              heightTwo = 20 - margin;
     
               var linearGradient = svg.append("defs")
                   .append("linearGradient")
@@ -187,13 +183,35 @@
                   .attr("stop-color", colorScale(50000));
     
               svg.append("rect")
-                  .attr("x", 0)
-                  .attr("y", 0)
+                  .attr("x", width - widthTwo - 50)
+                  .attr("y", 50)
                   .attr("width", widthTwo)
                   .attr("height", heightTwo)
-                  .style("stroke", "black")
-                  .style("stroke-width", 2)
                   .style("fill", "url(#linear-gradient)");
+              svg.append("text")
+                    .attr("class", "caption")
+                    .attr("x", width - widthTwo - 50)
+                    .attr("y", 40)
+                    .attr("fill", "#000")
+                    .attr("font-size", 14)
+                    .attr("text-anchor", "start")
+                    .text("Total Cost (USD)");
+              svg.append("text")
+                  .attr("class", "caption")
+                  .attr("x", width - widthTwo - 50)
+                  .attr("y", 90)
+                  .attr("fill", "#000")
+                  .attr("font-size", 14)
+                  .attr("text-anchor", "start")
+                  .text("0");
+              svg.append("text")
+                .attr("class", "caption")
+                .attr("x", width - 75)
+                .attr("y", 90)
+                .attr("fill", "#000")
+                .attr("font-size", 14)
+                .attr("text-anchor", "start")
+                .text("max");
     }
   
     }
