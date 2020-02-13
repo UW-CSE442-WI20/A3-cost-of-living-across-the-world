@@ -70,14 +70,41 @@
     function ready(error, dataGeo, data) {
 
       // Add a scale for bubble size
-      var valueExtent = d3.extent(data, function(d) { return scaleCircles(d); })
+      var valueExtent = d3.extent(data, function(d) {return +scaleCircles(d); })
+
       var colorScale = d3.scaleSequential()
         .domain(valueExtent)
-        .interpolator(d3.interpolateCool);
-      // var max_total = d3.max(data['Total'], function(d) { return +d.Total; })
-      // var colorScale = d3.scaleLinear().domain([0, 100941.6627]).range(['beige', 'red']);
+        .interpolator(d3.scaleOrdinal(d3.schemeOrRd[5]));
+
+      var Tooltip = svg
+          .append("text")
+          .attr("text-anchor", "end")
+          .style("fill", "black")
+          .attr("x", width - 10)
+          .attr("y", height - 30)
+          .attr("width", 90)
+          .style("font-size", 14)
+
+
+  // Three function that change the tooltip when user hover / move / leave a cell
+  // Will make the tooltip visible once a user hovers over an object that contains information to show
+  var mouseover = function (d) {
+      Tooltip.style("opacity", 1)
+  }
+
+  // This adds the data to the tooltip that will be displayed to the user
+  var mousemove = function (d) {
+      Tooltip
+          .html(d.City + ", " + d.Country + " - Total Cost of Living: $" + scaleCircles(d) + "")
+  }
+
+  // Will make the tooltip invisible once the users mouse moves off of an object that contains information
+  var mouseleave = function (d) {
+      Tooltip.style("opacity", 0)
+  }
+
       var g = svg.append("g");
-    
+
       // Draw the map
       g.selectAll("path")
       .data(dataGeo.features)
@@ -91,19 +118,7 @@
       .style("stroke", "none")
       .style("opacity", .3)
 
-      // Add circles
-      var circle = g.selectAll("circle")
-          .data(data)
-          .enter().append("circle")
-              .attr("r", 3) // radius
-              .attr("cx", function(d){ return projection([+d.Longitude, +d.Latitude])[0] }) // coordinates
-              .attr("cy", function(d){ return projection([+d.Longitude, +d.Latitude])[1] })
-              .style("fill", function(d){ return colorScale(scaleCircles(d))}) // scale value to color
-              .attr("fill-opacity", .7)
-              .attr("stroke", "black")
-              .attr("stroke-width", 0.2)
-
-    // Make the map zoomable
+      // Make the map zoomable
     svg.append("rect")
     .attr("fill", "none")
     .attr("pointer-events", "all")
@@ -115,34 +130,102 @@
 
     function zoom() {
       g.attr("transform", d3.event.transform);
+      circle.attr("transform", d3.event.transform);
     }
 
-    // Add title and explanation (can change later)
-    svg
-        .append("text")
-        .attr("text-anchor", "end")
-        .style("fill", "black")
-        .attr("x", width - 10)
-        .attr("y", height - 30)
-        .attr("width", 90)
-        .html("COST OF LIVING")
-        .style("font-size", 14)
+
+    if (valueExtent[0] !== 0 && valueExtent[1] !== 0) {
+
+      // Add circles
+      var circle = svg.selectAll("circle")
+          .data(data)
+          .enter().append("circle")
+              .attr("r", 3) // radius
+              .attr("cx", function(d){ return projection([+d.Longitude, +d.Latitude])[0] }) // coordinates
+              .attr("cy", function(d){ return projection([+d.Longitude, +d.Latitude])[1] })
+              .style("fill", function(d){ return colorScale(scaleCircles(d))}) // scale value to color
+              .attr("fill-opacity", .7)
+              .attr("stroke", "black")
+              .attr("stroke-width", 0.2)
+              .on("mouseover", mouseover) // These three functions are what makes our tooltip appear, display our data,
+              .on("mousemove", mousemove) // and make the tooltip disappear in the end
+              .on("mouseleave", mouseleave)
+              .call(d3.zoom()
+                  .on("zoom", zoom))
+
+
+              var margin = 0,
+              widthTwo = 250 - margin,
+              heightTwo = 20 - margin;
+    
+              var linearGradient = svg.append("defs")
+                  .append("linearGradient")
+                  .attr("id", "linear-gradient");
+    
+              linearGradient.append("stop")
+                  .attr("offset", "0%")
+                  .attr("stop-color", colorScale(10000));
+    
+              linearGradient.append("stop")
+                  .attr("offset", "25%")
+                  .attr("stop-color", colorScale(20000));
+    
+              linearGradient.append("stop")
+                  .attr("offset", "50%")
+                  .attr("stop-color", colorScale(30000));
+    
+              linearGradient.append("stop")
+                  .attr("offset", "75%")
+                  .attr("stop-color", colorScale(40000));
+    
+              linearGradient.append("stop")
+                  .attr("offset", "100%")
+                  .attr("stop-color", colorScale(50000));
+    
+              svg.append("rect")
+                  .attr("x", width - widthTwo - 50)
+                  .attr("y", 50)
+                  .attr("width", widthTwo)
+                  .attr("height", heightTwo)
+                  .style("fill", "url(#linear-gradient)");
+              svg.append("text")
+                    .attr("class", "caption")
+                    .attr("x", width - widthTwo - 50)
+                    .attr("y", 40)
+                    .attr("fill", "#000")
+                    .attr("font-size", 14)
+                    .attr("text-anchor", "start")
+                    .text("Total Cost (USD)");
+              svg.append("text")
+                  .attr("class", "caption")
+                  .attr("x", width - widthTwo - 50)
+                  .attr("y", 90)
+                  .attr("fill", "#000")
+                  .attr("font-size", 14)
+                  .attr("text-anchor", "start")
+                  .text("0");
+              svg.append("text")
+                .attr("class", "caption")
+                .attr("x", width - 75)
+                .attr("y", 90)
+                .attr("fill", "#000")
+                .attr("font-size", 14)
+                .attr("text-anchor", "start")
+                .text("max");
+    }
+  
     }
   }
 
   function scaleCircles(d) {
     var subs = document.querySelectorAll('.subcategory');
     var filteredTotal = 0;
-    // console.log(subs.length);
-    // console.log(subs[0].parentNode.getElementsByTagName('span')[0].innerHTML);
     for (var i = 0; i < subs.length; i++) {
       if (subs[i].checked) {
         filteredTotal += (+d[subs[i].parentNode.getElementsByTagName('span')[0].innerHTML]);
-        // var temp = '+d.' + subs[i].parentNode.getElementsByTagName('span')[0].innerHTML;
-        console.log(+d[subs[i].parentNode.getElementsByTagName('span')[0].innerHTML]);
       }
     }
-    return filteredTotal;
+    return filteredTotal.toFixed(2);
   }
 
   function checkUpperCategories() {

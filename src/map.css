@@ -60,6 +60,7 @@ ul {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     overflow-y: auto;
+    height: 633px;
 }
 
 #filter > ul {
