@@ -8,15 +8,15 @@ Data source: https://www.kaggle.com/stephenofarrell/cost-of-living
 Topic question: Which city has the most expensive costs of living for an average person (unit is in US dollars).
 
 We decided to make our visualization a map with a filter that allows users to pick which types of expenses to compare to see which city has the most expensive cost of living.
-Each city on the map will have a circle of a certain color, the color gradient would tell the readers how expensive it is to live there.
+Each city on the map will have a circle of a certain color, the color gradient would tell the readers how expensive it is to live there, the darker the color is, the more expensive it is to live in that city.
 At first, we decided to use the size of the circles to represent how expensive it is to live in different cities but later changed to use the color gradient as some of the circles overlap each other due to the distribution of cities in the database.
 Thus, we decided to choose only color difference instead of both color and size of the circles to avoid redundant encodings.
-----Mention legends here when it's added to the map?---- (Legend, which is the bar with gradient of color that represents the cost of each category in USD), how color is determined? Is it color gradient or different color blocks?
+The legend was added at the top left of the graph, which is the bar with gradient of color that represents the cost of each category in USD.
 
 Interaction techniques we chose to apply to this interactive visualization:
 Single-frame interactivity: we decided that our visualization manipulates the interaction of a single-frame without taking users to new visual scenes. By doing this, users would be able to concentrate on interacting with the current visualization view. We added the function that users are able to zoom in and out of the map to better see the exact location of the cities on the map.
-Filter bar: This filter bar enables users to choose which categories they want see the difference in expenses and compare different cities with each other.
---Details-on-demand if added (This is to show the name of cities and the cost of that category--
+Filter list: This filter list on the left of the map enables users to choose which categories they want see the difference in expenses and compare different cities with each other.
+Details-on-demand: When users click on the bubbles on the map, details about that city pop up at the bottom right corner.
 
 Another thing we considered was to use a bar graph, each city would have many corresponding bars that represent different categories, but there were too many categories and cities to include, so we decided to show all the cities in a map and reduce the number of categories by only selecting a few significant categories that mostly differentiate between cities.
 
@@ -26,8 +26,14 @@ Include a commentary on the development process, including answers to the follow
 Roughly how much time did you spend developing your application (in people-hours)?
 What aspects took the most time?
 
-We had 3 main meetings: The first meeting was to discuss about the topic and the visual encoding for this project. The second meeting was to catch up on the work flow and allocate the tasks accordingly. The third meeting was to add the final features, discuss about the write-up and fix some minor visual features. Other than that, all other communications were done through social network (Discord).
-We divided the tasks for each team member, there are different parts such as: Data wrangling and processing, coding for the map, creating the filter bar, write-up. All team members wear different hats and might help each other with their tasks besides our initial main tasks.
-In general, each of us spent about ........ Hours on average for this project.
---Adding what aspect took the most time--
+We had 3 main meetings: The first meeting was to discuss about the topic and the visual encoding for this project.
+The second meeting was to catch up on the work flow and allocate the tasks accordingly.
+The third meeting was to add the final features, discuss about the write-up and fix some major visual features.
+Other than that, all other communications were done through social network (Discord).
+
+We divided the tasks for each team member, there are different parts such as: Data wrangling and processing, coding for the map, creating the filter bar, write-up,...
+All team members wear different hats and might help each other with their tasks besides our initial main tasks.
+In general, each of us spent about 13 to 15 hours on average for this project.
+
+The part that took us the most time was getting the filter to work and establishing the connection between the filter list and the map.
 
